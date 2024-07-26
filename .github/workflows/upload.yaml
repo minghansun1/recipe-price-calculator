@@ -1,0 +1,17 @@
+name: ci/cd for git push 
+
+on: 
+  push: 
+    branches: [ master ]    
+  pull_request:
+    types: [closed]
+
+
+jobs:           
+  deploy: 
+      runs-on: self-hosted   
+      steps: 
+        #- uses: actions/checkout@v2  #this is used for if you want to push all source code into runner       
+        - name: update code base 
+          working-directory: /home/github_user/docking_station_file/team_pikachu_dockingstation 
+          run: sudo git pull origin master        
